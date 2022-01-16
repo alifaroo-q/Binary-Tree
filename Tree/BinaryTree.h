@@ -10,7 +10,14 @@ public:
 	BinaryTree();
 	~BinaryTree();
 	void bfs();
+	void preOrder();
+	void inOrder();
+	void postOrder();
 	void insert(int);
-	
+
+private:
+	void preOrderHelper(Node*);
+	void inOrderHelper(Node*);
+	void postOrderHelper(Node*);
 };
 

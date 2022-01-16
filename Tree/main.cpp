@@ -12,7 +12,7 @@ int main() {
 	tree.insert(6);
 	tree.insert(7);
 
-	tree.bfs();
+	tree.postOrder();
 
 	system("pause>0");
 }

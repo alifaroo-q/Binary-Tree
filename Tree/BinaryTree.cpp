@@ -1,5 +1,6 @@
 #include <iostream>
 #include <queue>
+#include <stack>
 #include "BinaryTree.h"
 
 
@@ -22,6 +23,39 @@ void BinaryTree::bfs() {
 		if (current->left != nullptr) queue.push(current->left);
 		if (current->right != nullptr) queue.push(current->right);
 	}
+}
+
+void BinaryTree::preOrder() {
+	preOrderHelper(this->root);
+}
+
+void BinaryTree::preOrderHelper(Node* node) {
+	if (node == nullptr) return;
+	std::cout << node->data << " ";
+	if (node->left != nullptr) preOrderHelper(node->left);
+	if (node->right != nullptr) preOrderHelper(node->right);
+}
+
+void BinaryTree::inOrder() {
+	inOrderHelper(this->root);
+}
+
+void BinaryTree::inOrderHelper(Node* node) {
+	if (node == nullptr) return;
+	if (node->left != nullptr) inOrderHelper(node->left);
+	std::cout << node->data << " ";
+	if (node->right != nullptr) inOrderHelper(node->right);
+}
+
+void BinaryTree::postOrder() {
+	postOrderHelper(this->root);
+}
+
+void BinaryTree::postOrderHelper(Node* node) {
+	if (node == nullptr) return;
+	if (node->left != nullptr) postOrderHelper(node->left);
+	if (node->right != nullptr) postOrderHelper(node->right);
+	std::cout << node->data << " ";
 }
 
 void BinaryTree::insert(int data) {

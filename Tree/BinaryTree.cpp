@@ -12,6 +12,44 @@ BinaryTree::~BinaryTree(){
 	delete this->root;
 }
 
+void BinaryTree::insert(int data) {
+	Node* newNode = new Node(data);
+	if (this->root == nullptr) {
+		this->root = newNode;
+		return;
+	}
+	std::queue<Node*> queque;
+	queque.push(this->root);
+	while (!queque.empty()) {
+		Node* current = queque.front();
+		queque.pop();
+		if (current->left == nullptr) {
+			current->left = newNode;
+			return;
+		}
+		if (current->right == nullptr) {
+			current->right = newNode;
+			return;
+		}
+		queque.push(current->left);
+		queque.push(current->right);
+	}
+}
+
+bool BinaryTree::contains(int data) {
+	std::queue<Node*> queue;
+	queue.push(this->root);
+
+	while (!queue.empty()) {
+		Node* current = queue.front();
+		queue.pop();
+		if (current->data == data) return true;
+		if (current->left != nullptr) queue.push(current->left);
+		if (current->right != nullptr) queue.push(current->right);
+	}
+	return false;
+}
+
 void BinaryTree::bfs() {
 	std::queue<Node*> queue;
 	queue.push(this->root);
@@ -58,26 +96,4 @@ void BinaryTree::postOrderHelper(Node* node) {
 	std::cout << node->data << " ";
 }
 
-void BinaryTree::insert(int data) {
-	Node* newNode = new Node(data);
-	if (this->root == nullptr) {
-		this->root = newNode;
-		return;
-	}
-	std::queue<Node*> queque;
-	queque.push(this->root);
-	while (!queque.empty()) {
-		Node* current = queque.front();
-		queque.pop();
-		if (current->left == nullptr) {
-			current->left = newNode;
-			return;
-		}
-		if (current->right == nullptr) {
-			current->right = newNode;
-			return;
-		}
-		queque.push(current->left);
-		queque.push(current->right);
-	}
-}
+

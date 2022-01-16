@@ -13,6 +13,8 @@ int main() {
 	tree.insert(7);
 
 	tree.postOrder();
+	
+	if (tree.contains(4)) std::cout << "\nelement found in tree";
 
 	system("pause>0");
 }

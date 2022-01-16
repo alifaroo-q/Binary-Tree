@@ -9,11 +9,13 @@ private:
 public:
 	BinaryTree();
 	~BinaryTree();
+
 	void bfs();
 	void preOrder();
 	void inOrder();
 	void postOrder();
 	void insert(int);
+	bool contains(int);
 
 private:
 	void preOrderHelper(Node*);
